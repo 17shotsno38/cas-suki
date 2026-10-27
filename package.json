@@ -1,0 +1,41 @@
+{
+  "name": "civicalert-platform",
+  "private": true,
+  "workspaces": [
+    "frontend/apps/*",
+    "frontend/packages/*",
+    "backend/apps/*",
+    "backend/packages/*"
+  ],
+  "scripts": {
+    "dev:all": "concurrently -n resident,cepalco,water,resident-api,cepalco-api,water-api -c green,red,blue,green,red,blue \"npm:dev:resident\" \"npm:dev:cepalco\" \"npm:dev:water\" \"npm:dev:api:resident\" \"npm:dev:api:cepalco\" \"npm:dev:api:water\"",
+    "dev:resident": "npm run dev --workspace @civicalert/resident-web",
+    "dev:cepalco": "npm run dev --workspace @civicalert/cepalco-web",
+    "dev:water": "npm run dev --workspace @civicalert/water-web",
+    "dev:api:resident": "npm run dev --workspace @civicalert/resident-api",
+    "dev:api:cepalco": "npm run dev --workspace @civicalert/cepalco-api",
+    "dev:api:water": "npm run dev --workspace @civicalert/water-api",
+    "dev:backend": "concurrently -n resident-api,cepalco-api,water-api -c green,red,blue \"npm:dev:api:resident\" \"npm:dev:api:cepalco\" \"npm:dev:api:water\"",
+    "build": "npm run build --workspace @civicalert/resident-web && npm run build --workspace @civicalert/cepalco-web && npm run build --workspace @civicalert/water-web",
+    "typecheck": "tsc --noEmit",
+    "test:api": "tsx --test backend/packages/api-core/src/gmail.test.ts backend/packages/api-core/src/server.test.ts",
+    "db:import:sqlite": "tsx backend/packages/api-core/scripts/import-sqlite-to-supabase.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "@tailwindcss/vite": "^4.0.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.0.6",
+    "vite": "^6.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "typescript": "^5.7.3"
+  }
+}

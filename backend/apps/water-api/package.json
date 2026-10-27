@@ -1,0 +1,8 @@
+{
+  "name": "@civicalert/water-api",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "tsx watch src/main.ts" },
+  "dependencies": { "@civicalert/api-core": "*" },
+  "devDependencies": { "tsx": "^4.19.2" }
+}

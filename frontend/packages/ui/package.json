@@ -1,0 +1,14 @@
+{
+  "name": "@civicalert/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./PortalApp": "./src/PortalApp.tsx",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

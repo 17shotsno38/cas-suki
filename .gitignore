@@ -1,0 +1,13 @@
+node_modules/
+dist/
+backend/data/
+.env
+
+# Local environment files and secrets
+.env*
+!.env.example
+**/credentials*.json
+**/client_secret*.json
+**/token.json
+*.pem
+*.key
